@@ -1,0 +1,49 @@
+class Solution {
+public:
+    vector<string> findWords(vector<string>& words) {
+        string s1 = "qwertyuiopQWERTYUIOP", s2 = "ASDFGHJKLasdfghjkl", s3 = "ZXCVBNMzxcvbnm";
+        vector<string> output;
+        int flag;
+        for(int i=0; i<words.size(); i++){
+            // std::transform(words[i].begin(), words[i].end(), words[i].begin(), ::tolower);
+            flag = 1;
+            for(int j=0; j<words[i].length(); j++){
+                int found = s1.find(words[i][j]);
+                if(found == string::npos){
+                    flag = 0;
+                    break;
+                }
+            }
+            if(flag == 1){
+                output.push_back(words[i]);
+                continue;
+            }
+            flag = 1;
+            for(int j=0; j<words[i].length(); j++){
+                int found = s2.find(words[i][j]);
+                if(found == string::npos){
+                    flag = 0;
+                    break;
+                }
+            }
+            if(flag == 1){
+                output.push_back(words[i]);
+                continue;
+            }
+            flag = 1;
+            for(int j=0; j<words[i].length(); j++){
+                int found = s3.find(words[i][j]);
+                if(found == string::npos){
+                    flag = 0;
+                    break;
+                }
+            }
+            if(flag == 1){
+                output.push_back(words[i]);
+                continue;
+            }
+        }
+        
+        return output;
+    }
+};
