@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> temp;
+        string a1 = "({[";
+        string a2 = ")}]";
+        
+        for(char c : s){
+            int found1 = a1.find(c);
+            int found2 = a2.find(c);
+            if(found1!=string::npos){
+                temp.push(c);
+            }
+            else if(found2!=string::npos){
+                if(!temp.empty() && temp.top()==a1[found2]){
+                    cout << "yes\n";
+                    temp.pop();
+                }
+            
+                else return false;
+            }
+            
+        }
+        if(!temp.empty()) return false;
+        return true;
+    }
+};
