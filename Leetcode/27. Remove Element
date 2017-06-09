@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int start = 0, last = nums.size();
+        
+        while(start < last){
+            if(nums[start] != val){
+                start++;
+            }
+            else{
+                swap(nums[start], nums[--last]);
+            }
+        }
+        return last;
+        /*int index = 0;
+        sort(nums.begin(), nums.end());
+        vector<int>::iterator it = find(nums.begin(), nums.end(), val);
+        vector<int>::iterator prev = it;
+        for(; it!=nums.end(); it++){
+            if(*it!=val){
+                *prev = *it;
+                prev++;
+            }
+        }
+        return prev - nums.begin();
+        */
+    }
+};
