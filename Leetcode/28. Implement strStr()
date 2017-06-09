@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        if(haystack.empty() && needle.empty()) return 0;
+        int size_n = needle.size();
+        for(int i=0; i<haystack.size(); i++){
+            // cout << haystack.substr(i, size_n) << endl;
+            if(!needle.compare(haystack.substr(i, size_n))){ // returns 0 if strings compare.
+                return i;
+            }
+        }
+        return -1;
+    }
+};
