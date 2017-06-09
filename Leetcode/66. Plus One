@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        int last = digits.size()-1;
+        int carry = 1;
+        for(int i=last; i>-1; i--){
+            digits[i] += carry;
+            carry = digits[i]/10;
+            cout << "yes " << carry << endl;
+            if(!carry){
+                break;
+            }
+            digits[i] = digits[i]%10;
+        }
+        cout << "no " << carry << endl;
+        if(carry) digits.insert(digits.begin(), carry);
+        return digits;
+    }
+};
