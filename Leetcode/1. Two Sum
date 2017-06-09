@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> output;
+        map<int, int> val;
+        map<int, int>::iterator it;
+        for(int i=0; i<nums.size(); i++){
+            val[nums[i]] = i;    
+        }
+        
+        for(int i=0; i<nums.size(); i++){
+            // cout << nums[i] << " -- " << 
+            it = val.find(target-nums[i]);
+            // cout << "-->" << it->second << " " << it->first << endl;
+            if(it!=val.end() && it->second!=i){
+                output.push_back(i);
+                output.push_back(it->second);
+                break;
+            }
+        }
+        return output;
+    }
+};
