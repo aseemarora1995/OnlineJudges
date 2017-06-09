@@ -1,0 +1,27 @@
+class Solution {
+public:
+    string countAndSay(int n) {
+        if(n==1){
+            cout << "returns 1\n";
+            return "1";
+        }
+        string s = countAndSay(n-1);
+        string temp;
+        int last=0, length=1;
+        for(int i=1; i<s.size(); i++){
+            if(s[i]==s[last]){
+                length++;
+            }
+            else{
+                temp += to_string(length) + s[last];
+                length = 1;
+            }
+            last = i;
+        }
+        if(length > 0){
+            temp += to_string(length) + s[last];
+        }
+        cout << "returns " << temp << endl;
+        return temp;
+    }
+};
