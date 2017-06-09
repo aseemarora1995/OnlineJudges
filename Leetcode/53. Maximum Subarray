@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        vector<int> sum(nums);
+        int maximum = sum[0];
+        cout << sum[0] << " ";
+        for(int i=1; i<sum.size(); i++){
+            sum[i] = max(sum[i], sum[i]+sum[i-1]);
+            cout << sum[i] << " ";
+            if(maximum < sum[i]) maximum = sum[i];
+        }
+    
+        return maximum;
+    }
+};
