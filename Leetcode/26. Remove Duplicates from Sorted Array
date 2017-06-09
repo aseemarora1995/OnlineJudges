@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int index_p = -1;
+        for(auto val: nums){
+            if( index_p==-1 || nums[index_p]!=val){
+                nums[++index_p] = val;
+            }
+        }
+        return index_p + 1;
+    }
+};
