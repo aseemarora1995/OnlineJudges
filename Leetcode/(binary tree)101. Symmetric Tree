@@ -1,0 +1,60 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool isSymmetricUtil(TreeNode *one, TreeNode *two){
+        if(one==NULL && two==NULL)
+            return true;
+        if(one && two && one->val == two->val)
+            return isSymmetricUtil(one->left, two->right) && isSymmetricUtil(one->right, two->left);
+        return false;
+    }
+    
+    bool isSymmetric(TreeNode* root){
+        if(root==NULL) return true;
+        return isSymmetricUtil(root->left, root->right);
+        
+    }
+    
+    /*
+    bool isSymmetric(TreeNode* root) {
+        queue<TreeNode*> q1, q2;
+        if(root == NULL) return true;
+        if(root->left==NULL && root->right==NULL) return true;
+        if(root->left==NULL || root->right==NULL) return false;
+        q1.push(root->left); q2.push(root->right);
+        while(!q1.empty() && !q2.empty()){
+            TreeNode *curr1 = q1.front();
+            TreeNode *curr2 = q2.front();
+            if(curr1->val != curr2->val)
+                return false;
+            q1.pop(); q2.pop();
+            if(curr1->left==NULL || curr2->right==NULL){
+                cout << "one\n";
+                if(curr1->left!=NULL || curr2->right!=NULL){
+                    return false;
+                }
+            }
+            else{
+                q1.push(curr1->left); q2.push(curr2->right);
+            }
+            if(curr1->right==NULL || curr2->left==NULL){
+                if(curr1->right!=NULL || curr2->left!=NULL){
+                    return false;
+                }
+            }
+            else{
+                q1.push(curr1->right); q2.push(curr2->left);
+            }
+        }
+        return true;
+    }
+    */
+};
