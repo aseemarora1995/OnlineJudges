@@ -8,6 +8,23 @@
  */
 class Solution {
 public:
+    // Recursive solution
+    ListNode* reverseListUtil(ListNode *curr, ListNode *nexter){
+        ListNode* head = curr;
+        if(!nexter)
+            return curr;
+        head = reverseListUtil(nexter, nexter->next);
+        nexter->next = curr;
+        curr->next = NULL;
+        return head;
+    }
+    ListNode* reverseList(ListNode* head){
+        if(!head) return head;
+        head = reverseListUtil(head, head->next);
+        return head;
+    }
+    /*
+    // Iterative solution
     ListNode* reverseList(ListNode* head) {
         ListNode *temp_prev = NULL;
         ListNode *temp_curr = head;
@@ -21,4 +38,5 @@ public:
         }
         return temp_prev;
     }
+    */
 };
