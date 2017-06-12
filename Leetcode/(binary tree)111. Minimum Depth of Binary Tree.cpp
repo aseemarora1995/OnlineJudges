@@ -9,7 +9,6 @@
  */
 class Solution {
 public:
-    
     int minDepth(TreeNode* root) {
         if(root==NULL) return 0;
         if(!root->left && !root->right) return 1;
